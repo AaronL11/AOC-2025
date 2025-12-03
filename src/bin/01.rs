@@ -30,8 +30,7 @@ pub fn part_one(input: &str) -> Option<u64> {
         .flat_map(parse1)
         .scan(State { pw: 0, acc: 50 }, |state, x| {
             // dbg!(&state, x);
-            state.acc += x;
-            state.acc %= M;
+            state.acc = (M + state.acc + x) % M;
             if state.acc == 0 {
                 state.pw += 1;
             }
