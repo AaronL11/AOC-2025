@@ -22,6 +22,9 @@ data/inputs/*
 data/puzzles/*
 !data/puzzles/.keep
 
+# Cookie File
+cookie
+
 # Dhat
 dhat-heap.json
 
