@@ -7,7 +7,7 @@ fn parse1(s: &str) -> Option<i64> {
     let n = i64::from_str_radix(s.get(1..).unwrap(), 10).ok()?;
     let res = sgn * n;
     // dbg!(sgn, n, res);
-    Some((M + res) % M)
+    Some((M + res % M) % M)
 }
 
 fn parse2(s: &str) -> Option<i64> {
