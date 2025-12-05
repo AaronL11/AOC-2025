@@ -10,7 +10,6 @@ fn parse(s: &str) -> Option<Vec<u8>> {
 
 fn solve(state: &mut u64, batteries: Vec<u8>) -> Option<u64> {
     let poss = (1..=9)
-        .rev()
         .flat_map(|n| {
             let mut idx = batteries.len();
             let mut cnt = 0;
@@ -26,21 +25,16 @@ fn solve(state: &mut u64, batteries: Vec<u8>) -> Option<u64> {
                 Some((n as u64, idx, cnt))
             }
         })
-        .collect::<Vec<_>>();
+        .last()?;
     let mut res = 0;
-    if poss.len() == 1 {
-        let (b, _, _) = poss[0];
+    let (b, idx, cnt) = poss;
+    if cnt > 1 {
         res = b * 10 + b;
     } else {
-        let (b, idx, cnt) = poss[0];
-        if cnt > 1 {
-            res = b * 10 + b;
-        } else {
-            if let Some(max) = batteries[idx + 1..].iter().max() {
-                res = b * 10 + *max as u64;
-            } else if let Some(max) = batteries[..idx].iter().max() {
-                res = *max as u64 * 10 + b;
-            }
+        if let Some(max) = batteries[idx + 1..].iter().max() {
+            res = b * 10 + *max as u64;
+        } else if let Some(max) = batteries[..idx].iter().max() {
+            res = *max as u64 * 10 + b;
         }
     }
     *state += res;

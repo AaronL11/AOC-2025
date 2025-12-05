@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use std::collections::{BTreeMap, BTreeSet, VecDeque};
+use std::collections::VecDeque;
 
 advent_of_code::solution!(4);
 
@@ -79,7 +79,6 @@ pub fn part_two(input: &str) -> Option<u64> {
     ];
     let mut ngrid = [[-1i8; MAXN + 2]; MAXN + 2];
     let mut queue = VecDeque::new();
-    let mut coords: BTreeMap<usize, BTreeSet<(usize, usize)>> = BTreeMap::new();
     for r in 1..=MAXN {
         for c in 1..=MAXN {
             if grid[r][c] == '@' {
@@ -89,13 +88,6 @@ pub fn part_two(input: &str) -> Option<u64> {
                     if grid[rp as usize][cp as usize] == '@' {
                         cnt += 1;
                     }
-                }
-                if let Some(set) = coords.get_mut(&cnt) {
-                    set.insert((r, c));
-                } else {
-                    let mut set = BTreeSet::new();
-                    set.insert((r, c));
-                    coords.insert(cnt, set);
                 }
                 ngrid[r][c] = cnt as i8;
                 if cnt < 4 {
