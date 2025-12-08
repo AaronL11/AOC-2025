@@ -30,8 +30,9 @@ Using this [template](https://github.com/fspoettel/advent-of-code-rust)
 | [Day 5](./src/bin/05.rs) | `119.4µs` | `30.7µs` |
 | [Day 6](./src/bin/06.rs) | `53.3µs` | `95.3µs` |
 | [Day 7](./src/bin/07.rs) | `129.6µs` | `308.7µs` |
+| [Day 8](./src/bin/08.rs) | `15.4ms` | `16.5ms` |
 
-**Total: 4.62ms**
+**Total: 36.52ms**
 <!--- benchmarking table --->
 
 ---

@@ -93,9 +93,6 @@ pub fn part_two(input: &str) -> Option<u64> {
             row
         })
         .collect::<Vec<_>>();
-    let n = grid.len();
-    let m = grid[0].len();
-    let mut cnt = 0;
     let mut cache = HashMap::new();
     Some(search(start, &grid, &mut cache))
 }
